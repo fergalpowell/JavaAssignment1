@@ -8,9 +8,10 @@ public class Control
 {
 	public static void main(String args[]) throws IOException
 	{
-	
-		TextFile file1 = new TextFile("src/com/test/assignment1/text1.txt");
-		TextFile file2 = new TextFile("src/com/test/assignment1/text2.txt");
+		OpenFileWithGui f1 = new OpenFileWithGui();
+		OpenFileWithGui f2 = new OpenFileWithGui();
+		TextFile file1 = new TextFile(f1.SelectFileGui());
+		TextFile file2 = new TextFile(f2.SelectFileGui());
 		TextFile file3 = new TextFile("src/com/test/assignment1/Stopwords.txt");
 		
 		StopWords relevantFile1Words = new StopWords(file3.ScanDocument(), file1.ScanDocument());

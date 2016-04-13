@@ -49,13 +49,13 @@ public class Results
 		writer.println("The length of file 2 is: " + file2Length + " words");
 		writer.println("The size of file 1 is: " + file1Size + " Bytes");
 		writer.println("The size of file 2 is: " + file2Size + " Bytes");
-		writer.println("\nHere is a list of all the common words from both text files and the number of occurrences of the word:");
+		writer.println("\nCommon words from both text files and the number of occurrences:");
 		
 		Set<String> unique = new HashSet<String>(similarWords);
 		int counter = 1;
 		
 		for (String key : unique) {
-		    writer.println(counter + ": '" + key + "', number of occurrences: " + Collections.frequency(similarWords, key));
+		    writer.println("\t" + counter + ": '" + key + "', number of occurrences: " + Collections.frequency(similarWords, key));
 		    counter++;
 		}
 		
