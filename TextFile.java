@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TextFile
@@ -19,33 +20,49 @@ public class TextFile
 	}
 	
 	// methods
-	String[] ScanDocument() throws FileNotFoundException
+	ArrayList<String> ScanDocument() throws FileNotFoundException
 	{
-		List<String> text = new ArrayList<String>();
-		Scanner sc = new Scanner(new File(this.path));
+		String content = new Scanner(new File(path)).useDelimiter("\\Z").next();
+		String[] words = content.replaceAll("\\p{P}", "").toLowerCase().split("\\s+");
+		ArrayList<String> text = new ArrayList<String>(Arrays.asList(words));	
+		return text;
+	}
+	
+	ArrayList<String> ScanTitle() throws FileNotFoundException
+	{
+		String title;
+		Scanner sc = new Scanner(new File(path));
 		
-		while(sc.hasNext())
-		{
-			text.add(sc.next());
-		}
+		title = sc.nextLine();
+		title.trim();
+		List<String> buffer = Arrays.asList(title.split(" "));
+		ArrayList<String> titleWords = new ArrayList<String>(buffer.size());
+		titleWords.addAll(buffer);
 		sc.close();
-		String[] words = new String[text.size()];
-		words = text.toArray(words);
-		return words;
+		
+		return titleWords;
+	}
+	
+	int GetFileLength() throws FileNotFoundException
+	{
+		Scanner sc = new Scanner(new File(path));
+		int count=0;
+		while(sc.hasNext()){
+		    sc.next();
+		    count++;
+		}
+		return count;
+	}
+	
+	long GetFileSize()
+	{
+		File textFile = new File(path);
+		long size = textFile.length();
+		return size;
 	}
 	
 }
-	/*String[] words1 = new String[f1.size()];
-	words1 = f1.toArray(words1);
-	
-	List<String> similarWords = new ArrayList<String>();
-	
-	ArrayList<Integer> wordPercentageTxt1 = new ArrayList<Integer>();
-	ArrayList<Integer> wordPercentageTxt2 = new ArrayList<Integer>();
-	int percentage1 = 0, percentage2 = 0, counter = 0;
-	
-	
-	System.out.println(similarWords);*/
+
 
 
 

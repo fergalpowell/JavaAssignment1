@@ -1,14 +1,16 @@
 package com.test.assignment1;
 
+import java.util.ArrayList;
+
 public class WordPercentage
 {
 	// attributes
-	private String[] commonWords;
-	private String[] fileWords;
+	private ArrayList<String> commonWords;
+	private ArrayList<String> fileWords;
 
 	
 	// constructors
-	WordPercentage(String[] commonWords, String[] fileWords)
+	WordPercentage(ArrayList<String> commonWords, ArrayList<String> fileWords)
 	{
 		this.commonWords = commonWords;
 		this.fileWords = fileWords;
@@ -18,10 +20,9 @@ public class WordPercentage
 	int GetPercentage()
 	{
 		int filePercentage;
-		filePercentage = (int) ((float)100 * ((float)commonWords.length / (float)fileWords.length));
-		System.out.println(commonWords.length);
-		System.out.println(fileWords.length);
-		
+		filePercentage = (int) ((float)100 * ((float)commonWords.size() / (float)fileWords.size()));
+		System.out.println(commonWords.size());
+		System.out.println(fileWords.size());
 		return filePercentage;
 	}
 }
