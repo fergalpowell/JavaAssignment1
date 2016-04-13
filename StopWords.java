@@ -1,7 +1,13 @@
 package com.test.assignment1;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class StopWords 
 {
@@ -34,6 +40,31 @@ public class StopWords
 			}
 		}
 		return filteredWords;
+	}
+	
+	void DisplayStopWords() throws FileNotFoundException
+	{
+		Scanner sc = new Scanner(new File("src/com/test/assignment1/Stopwords.txt"));
+		ArrayList<String> allStopWords = new ArrayList<String>();
+		while(sc.hasNext())
+		{
+			allStopWords.add(sc.next());
+		}
+		for(String word : allStopWords)
+		{
+			System.out.println(word);
+		}
+	}
+	
+	void AddStopWord() throws IOException
+	{
+		Scanner newStopWord = new Scanner(System.in);
+		FileWriter fileWritter = new FileWriter("src/com/test/assignment1/Stopwords.txt",true);
+        BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+        bufferWritter.newLine();
+        bufferWritter.newLine();
+        bufferWritter.write(newStopWord.next());
+        bufferWritter.close();
 	}
 
 }

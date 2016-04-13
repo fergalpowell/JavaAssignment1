@@ -3,6 +3,9 @@ package com.test.assignment1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import javax.swing.JFileChooser;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +16,7 @@ public class TextFile
 	private String path; 
 	
 	
+	
 	// constructors
 	TextFile(String path)
 	{
@@ -20,6 +24,8 @@ public class TextFile
 	}
 	
 	// methods
+	
+	
 	ArrayList<String> ScanDocument() throws FileNotFoundException
 	{
 		String content = new Scanner(new File(path)).useDelimiter("\\Z").next();
